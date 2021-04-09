@@ -1,12 +1,18 @@
 import { useState } from 'react';
 
+import AuthModel from '../models/AuthModel';
+
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('Submit! That! Form!')
+    AuthModel.login({email, password})
+      .then(response => {
+        localStorage.setItem('uid', response.signedJwt);
+      })
   }
 
   return (
