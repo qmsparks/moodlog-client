@@ -1,4 +1,4 @@
-import {BASE_URI} from '../config/constants';
+import { BASE_URI } from '../config/constants';
 const URL = `${BASE_URI}/auth`;
 
 class AuthModel {
