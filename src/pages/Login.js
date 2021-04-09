@@ -11,7 +11,11 @@ const Login = () => {
     e.preventDefault();
     AuthModel.login({email, password})
       .then(response => {
-        localStorage.setItem('uid', response.signedJwt);
+        if (response.status === 200) {
+          localStorage.setItem('uid', response.signedJwt);
+        } else {
+          // TODO handle login errors here
+        }
       })
   }
 

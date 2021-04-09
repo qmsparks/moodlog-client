@@ -1,12 +1,11 @@
-import Register from './pages/Register';
+import Routes from './config/Routes';
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <h1>Wassup</h1>
-      <Register />
+      <Routes />
     </div>
   );
 }
