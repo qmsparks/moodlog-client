@@ -2,24 +2,40 @@ import { useState } from 'react';
 
 import AuthModel from '../models/AuthModel';
 
-
-const Login = () => {
+const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    AuthModel.login({email, password})
+    console.log('Love to sign up');
+    AuthModel.register({name, email, password})
       .then(response => {
-        localStorage.setItem('uid', response.signedJwt);
+        if (response.status === 201) {
+          AuthModel.login({email, password})
+            .then(response => {
+              localStorage.setItem('uid', response.signedJwt);
+            })
+        } else {
+          // TODO handle registration errors here
+        }
       })
   }
 
   return (
     <div>
-      <h2>Log In</h2>
+      <h2>Register</h2>
 
       <form onSubmit={handleSubmit}>
+        <label htmlFor="name">Name</label>
+        <input 
+        type="text"
+        name="name"
+        value={name}
+        onChange={e => setName(e.target.value)}
+        />
+
         <label htmlFor="email">Email</label>
         <input 
         type="email"
@@ -30,17 +46,16 @@ const Login = () => {
 
         <label htmlFor="password">Password</label>
         <input 
-        type="password"
+        type="password" 
         name="password"
         value={password}
         onChange={e => setPassword(e.target.value)}
         />
 
-        <button type="submit">Log In</button>
+        <button type="submit">Register</button>
       </form>
     </div>
   )
-
 }
 
-export default Login;
+export default Register;

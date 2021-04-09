@@ -1,4 +1,4 @@
-import Login from './pages/Login'
+import Register from './pages/Register';
 
 import './App.css';
 
@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
       <h1>Wassup</h1>
-      <Login />
+      <Register />
     </div>
   );
 }
