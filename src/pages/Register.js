@@ -9,7 +9,6 @@ const Register = () => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('Love to sign up');
     AuthModel.register({name, email, password})
       .then(response => {
         if (response.status === 201) {
