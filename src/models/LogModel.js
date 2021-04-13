@@ -32,17 +32,17 @@ class LogModel {
   //   .then(response => response.json());
   // }
 
-  // static update = (logId, logData) => {
-  //   return fetch(`${URL}/${logId}`, {
-  //     method: "PUT",
-  //     headers: {
-  //       authorization: `Bearer ${localStorage.uid}`, 
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify(logData)
-  //   })
-  //   .then(response => response.json());
-  // }
+  static update = (logId, logData) => {
+    return fetch(`${URL}/${logId}`, {
+      method: "PUT",
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`, 
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(logData)
+    })
+    .then(response => response.json());
+  }
 
   // static delete = logId => {
   //   return fetch(`${URL}/${logId}`, {

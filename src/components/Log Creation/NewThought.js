@@ -2,13 +2,13 @@ import { useState } from 'react';
 
 import ThoughtModel from '../../models/ThoughtModel';
 
-const NewThought = ({ addThought }) => {
+const NewThought = ({ addThought, moodLog }) => {
   const [negativeThought, setNegativeThought] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    ThoughtModel.create({ negativeThought })
+    ThoughtModel.create({ negativeThought, moodLog })
       .then(response => {
         addThought(response.thought._id);
       })

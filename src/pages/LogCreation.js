@@ -24,12 +24,21 @@ const LogCreation = () => {
     setThoughts(updatedThoughts);
   }
 
+  const saveLog = () => {
+    LogModel.update(logId, {emotions, thoughts})
+      .then(response => {
+        console.log(response);
+      })
+  }
+
   return (
     <div>
       <h2>New Mood Log</h2>
       <NewLog logToState={logToState} />
-      <NewEmotion addEmotion={addEmotion} />
-      <NewThought addThought={addThought} />
+      <NewEmotion addEmotion={addEmotion} moodLog={logId} />
+      <NewThought addThought={addThought} moodLog={logId} />
+
+      <button onClick={saveLog}>Update Log</button>
     </div>
   )
 }

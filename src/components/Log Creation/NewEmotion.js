@@ -2,14 +2,14 @@ import { useState } from 'react';
 
 import EmotionModel from '../../models/EmotionModel';
 
-const NewEmotion = ({ addEmotion }) => {
+const NewEmotion = ({ addEmotion, moodLog }) => {
   const [name, setName] = useState('');
   const [startStrength, setStartSrength] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    EmotionModel.create({ name, startStrength })
+    EmotionModel.create({ name, startStrength, moodLog })
       .then(response => {
         addEmotion(response.emotion._id);
       })
