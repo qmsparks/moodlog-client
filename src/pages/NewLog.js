@@ -1,22 +1,27 @@
 import { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 
-import LogModel from '../../models/LogModel';
+import LogModel from '../models/LogModel';
 
-const NewLog = ({ logToState }) => {
+const NewLog = () => {
   const [event, setEvent] = useState('');
+  const history = useHistory();
 
   const handleSubmit = e => {
     e.preventDefault();
     LogModel.create({ event })
       .then(response => {
-        logToState(response.log._id);
+        console.log(response);
+        history.push(`/logs/${response.log._id}`);
       })
   }
 
   return (
     <div>
+      <h1>New Mood Log</h1>
+
       <form onSubmit={handleSubmit}>
-        <label htmlFor="event">Upsetting Event</label>
+      <label htmlFor="event">Upsetting Event</label>
         <input 
         type="text" 
         name="event"

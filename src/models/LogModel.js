@@ -23,14 +23,14 @@ class LogModel {
   //   .then(response => response.json());
   // }
 
-  // static show = logId => {
-  //   return fetch(`${URL}/${logId}`, {
-  //     headers: {
-  //       authorization: `Bearer ${localStorage.uid}`
-  //     }
-  //   })
-  //   .then(response => response.json());
-  // }
+  static show = logId => {
+    return fetch(`${URL}/${logId}`, {
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`
+      }
+    })
+    .then(response => response.json());
+  }
 
   static update = (logId, logData) => {
     return fetch(`${URL}/${logId}`, {
