@@ -1,17 +1,22 @@
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 
+import { logState } from '../../recoil/logs';
 import EmotionModel from '../../models/EmotionModel';
 
-const NewEmotion = ({ addEmotion, moodLog }) => {
+const NewEmotion = () => {
+  const [log, setLog] = useRecoilState(logState);
   const [name, setName] = useState('');
   const [startStrength, setStartSrength] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    EmotionModel.create({ name, startStrength, moodLog })
+    EmotionModel.create(log._id, {name, startStrength})
       .then(response => {
-        addEmotion(response.emotion._id);
+        setLog(response.log);
+        setName('');
+        setStartSrength('');
       })
   }
 

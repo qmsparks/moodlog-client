@@ -2,8 +2,8 @@ import { BASE_URI } from '../config/constants';
 const URL = `${BASE_URI}/emotions`;
 
 class EmotionModel {
-  static create = emotionData => {
-    return fetch(URL, {
+  static create = (logId, emotionData) => {
+    return fetch(`${URL}/${logId}`, {
       method: "POST",
       headers: {
         authorization: `Bearer ${localStorage.uid}`,

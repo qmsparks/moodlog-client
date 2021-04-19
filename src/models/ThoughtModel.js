@@ -2,8 +2,8 @@ import { BASE_URI } from '../config/constants';
 const URL = `${BASE_URI}/thoughts`;
 
 class ThoughtModel {
-  static create = thoughtData => {
-    return fetch(URL, {
+  static create = (logId, thoughtData) => {
+    return fetch(`${URL}/${logId}`, {
       method: "POST",
       headers: {
         authorization: `Bearer ${localStorage.uid}`,

@@ -1,18 +1,22 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useRecoilState } from 'recoil';
 
+import { logState } from '../recoil/logs';
 import LogModel from '../models/LogModel';
 
 const NewLog = () => {
   const [event, setEvent] = useState('');
+  const [log, setLog] = useRecoilState(logState);
+
   const history = useHistory();
 
   const handleSubmit = e => {
     e.preventDefault();
     LogModel.create({ event })
       .then(response => {
-        console.log(response);
-        history.push(`/logs/${response.log._id}`);
+        setLog(response.log);
+        history.push(`/logs/${log._id}`);
       })
   }
 
