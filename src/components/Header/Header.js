@@ -21,6 +21,11 @@ const Header = () => {
           </NavLink>
         </li>
         <li>
+          <NavLink to='/logs'>
+            Your Mood Logs
+          </NavLink>
+        </li>
+        <li>
           <NavLink to='/logs/new'>
             New Mood Log
           </NavLink>

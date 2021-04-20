@@ -12,3 +12,11 @@ export const emotionState = selector ({
     return log.emotions;
   }
 })
+
+export const thoughtState = selector ({
+  key: 'thoughtState',
+  get: ({get}) => {
+    const log = get(logState);
+    return log.thoughts;
+  }
+})

@@ -13,6 +13,7 @@ class ThoughtModel {
     })
     .then(response => response.json());
   }
+
 }
 
 export default ThoughtModel;

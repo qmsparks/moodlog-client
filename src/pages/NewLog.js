@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useRecoilState } from 'recoil';
+import { useSetRecoilState } from 'recoil';
 
 import { logState } from '../recoil/logs';
 import LogModel from '../models/LogModel';
 
 const NewLog = () => {
   const [event, setEvent] = useState('');
-  const [log, setLog] = useRecoilState(logState);
+  const setLog = useSetRecoilState(logState);
 
   const history = useHistory();
 
@@ -16,7 +16,7 @@ const NewLog = () => {
     LogModel.create({ event })
       .then(response => {
         setLog(response.log);
-        history.push(`/logs/${log._id}`);
+        history.push(`/logs/${response.log._id}`);
       })
   }
 

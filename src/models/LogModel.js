@@ -14,14 +14,14 @@ class LogModel {
     .then(response => response.json());
   }
 
-  // static all = () => {
-  //   return fetch(URL, {
-  //     headers: {
-  //       authorization: `Bearer ${localStorage.uid}`
-  //     }
-  //   })
-  //   .then(response => response.json());
-  // }
+  static all = () => {
+    return fetch(URL, {
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`
+      }
+    })
+    .then(response => response.json());
+  }
 
   static show = logId => {
     return fetch(`${URL}/${logId}`, {

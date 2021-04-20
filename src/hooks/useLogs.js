@@ -7,6 +7,8 @@ import LogModel from '../models/LogModel';
 const useLogs = logId => {
   const [log, setLog] = useRecoilState(logState);
 
+
+
   useEffect(function() {
     fetchLog(logId);
   },
@@ -15,7 +17,7 @@ const useLogs = logId => {
   function fetchLog(id) {
     LogModel.show(id).then(response => {
       setLog(response.log);
-    })
+    }) 
   }
 
   return [log];

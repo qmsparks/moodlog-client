@@ -5,6 +5,7 @@ import Register from '../pages/Register';
 import Login from '../pages/Login';
 import NewLog from '../pages/NewLog';
 import LogDetail from '../pages/LogDetail';
+import LogIndex from '../pages/LogIndex';
 
 const Routes = () => {
   return(
@@ -13,6 +14,7 @@ const Routes = () => {
       <Route exact path='/register' component={Register} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/logs/new' component={NewLog} />
+      <Route exact path='/logs' component={LogIndex} />
       <Route path='/logs/:id' component={LogDetail} />
     </Switch>
   )

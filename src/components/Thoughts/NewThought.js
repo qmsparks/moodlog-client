@@ -1,16 +1,20 @@
 import { useState } from 'react';
+import { useRecoilState } from 'recoil';
 
+import { logState } from '../../recoil/logs';
 import ThoughtModel from '../../models/ThoughtModel';
 
-const NewThought = ({ addThought, moodLog }) => {
+const NewThought = () => {
+  const [log, setLog] = useRecoilState(logState);
   const [negativeThought, setNegativeThought] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
 
-    ThoughtModel.create({ negativeThought, moodLog })
+    ThoughtModel.create(log._id, {negativeThought})
       .then(response => {
-        addThought(response.thought._id);
+        setLog(response.log);
+        setNegativeThought('');
       })
   }
 
