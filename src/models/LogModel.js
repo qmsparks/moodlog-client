@@ -44,15 +44,15 @@ class LogModel {
     .then(response => response.json());
   }
 
-  // static delete = logId => {
-  //   return fetch(`${URL}/${logId}`, {
-  //     method: "DELETE",
-  //     headers: {
-  //       authorization: `Bearer ${localStorage.uid}`
-  //     }
-  //   })
-  //   .then(response => response.json());
-  // }
+  static delete = logId => {
+    return fetch(`${URL}/${logId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`
+      }
+    })
+    .then(response => response.json());
+  }
 }
 
 export default LogModel;
