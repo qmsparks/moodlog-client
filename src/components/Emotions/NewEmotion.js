@@ -7,7 +7,7 @@ import EmotionModel from '../../models/EmotionModel';
 const NewEmotion = () => {
   const [log, setLog] = useRecoilState(logState);
   const [name, setName] = useState('');
-  const [startStrength, setStartSrength] = useState('');
+  const [startStrength, setStartSrength] = useState(50);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -33,10 +33,12 @@ const NewEmotion = () => {
         onChange={e => setName(e.target.value)}
         />
 
-        <label htmlFor="startStrength">How strongly from 0 to 100?</label>
+        <label htmlFor="startStrength">How strongly?</label>
         <input 
-        type="number"
-        name="startStrength"
+        type="range" 
+        name="startStrength" 
+        min="1"
+        max="100"
         value={startStrength}
         onChange={e => setStartSrength(e.target.value)}
         />
