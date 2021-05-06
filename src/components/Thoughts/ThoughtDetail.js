@@ -1,7 +1,7 @@
 const ThoughtDetail = ({ thought }) => {
 
   return (
-    <p>{thought.negativeThought}</p>
+    <p>{thought.negativeThought} {thought.startStrength}%</p>
   )
 }
 

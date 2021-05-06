@@ -25,7 +25,7 @@ const NewLog = () => {
       <h1>New Mood Log</h1>
 
       <form onSubmit={handleSubmit}>
-      <label htmlFor="event">Upsetting Event</label>
+      <label htmlFor="event">Describe The Upsetting Event</label>
         <input 
         type="text" 
         name="event"
