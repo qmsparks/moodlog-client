@@ -1,25 +1,27 @@
 import useLogs from '../hooks/useLogs';
-import EmotionContainer from '../components/MoodLogs/EmotionContainer';
-import ThoughtContainer from '../components/MoodLogs/ThoughtContainer';
+import LogInProgress from '../containers/LogInProgress';
+import CompletedLog from '../containers/CompletedLog';
 
 import '../Sass/Forms.scss';
 
 const LogDetail = ({ match }) => {
   const [log] = useLogs(match.params.id);
 
+  const checkCompletion = () => {
+    return log.complete ? 
+    <CompletedLog log={log} /> : 
+    <LogInProgress log={log}/>
+  }
 
   return (
-    <div>
+    <>
       {
         !log ?
         <p>Loading...</p> :
-        <>
-        <h1>{log.event}</h1>
-        <EmotionContainer />
-        <ThoughtContainer />
-      </>
+        checkCompletion()
       }
-    </div>
+
+    </>
     
   )
 }

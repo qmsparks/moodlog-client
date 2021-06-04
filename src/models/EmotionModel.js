@@ -14,6 +14,18 @@ class EmotionModel {
     .then(response => response.json());
   }
 
+  static update = (emotionId, emotionData) => {
+    return fetch(`${URL}/${emotionId}`, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${localStorage.uid}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(emotionData)
+    })
+    .then(response => response.json());
+  }
+
 }
 
 export default EmotionModel;
